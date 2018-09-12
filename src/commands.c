@@ -6,24 +6,11 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 12:53:17 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/12 17:20:06 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
-
-void	ft_print_arg(char *arg)
-{
-	int		i;
-
-	i = 0;
-	while (arg[i])
-	{
-		if (arg[i] != '\"')
-			ft_putchar(arg[i]);
-		i++;
-	}
-}
 
 void    ft_echo(char **split)
 {
@@ -44,4 +31,30 @@ void    ft_echo(char **split)
         }
     }
     ft_putchar('\n');
+}
+
+void	ft_env(char **envp)
+{
+	int		i;
+
+	i = 0;
+	while (envp[i] != NULL)
+	{
+		ft_printf("\e[0;32m%s\n", envp[i]);
+		i++;
+	}
+}
+
+void	ft_setenv(char **split, char **envp)
+{
+	int		i;
+
+	i = 0;
+	if (check_envp(envp, split[1]) == 1)
+	{
+		i = find_var(split[1], envp);
+		change_line(split[1], envp);
+	}
+	else
+		add_var(split[1], envp);
 }
