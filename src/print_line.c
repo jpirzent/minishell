@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 11:09:39 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/12 12:38:50 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void    print_line(char **line)
     else if (ft_strequ(split[0], "echo"))
         ft_echo(split);
     else
-        ft_printf("invalid arg\n");
+        ft_printf("\e[1;31minvalid arg\n\e[0m");
 }
