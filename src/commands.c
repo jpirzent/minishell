@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 11:19:53 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/09/12 11:23:17 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-# include <unistd.h>
-# include <stdlib.h>
-# include "../library/ft_printf/ft_printf.h"
-# include "../library/libft/libft.h"
+#include "../inc/minishell.h"
 
-void    print_start(void);
-void    print_line(char **line);
-void	ft_echo(char **split);
+void    ft_echo(char **split)
+{
+    int     i;
 
-#endif
+    i = 1;
+    while (split[i] != NULL)
+    {
+        if (split[i] == NULL || split[i][0] == 0)
+            i++;
+        else
+        {
+            ft_putstr(split[i]);
+            ft_putchar(' ');
+            i++;
+        }
+    }
+    ft_putchar('\n');
+}

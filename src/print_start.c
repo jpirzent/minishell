@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   print_start.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 11:19:53 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/09/12 09:53:04 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/09/12 12:12:47 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-# include <unistd.h>
-# include <stdlib.h>
-# include "../library/ft_printf/ft_printf.h"
-# include "../library/libft/libft.h"
+#include "../inc/minishell.h"
 
-void    print_start(void);
-void    print_line(char **line);
-void	ft_echo(char **split);
-
-#endif
+void    print_start(void)
+{
+    ft_printf("\e[1;34m************************************************************\n");
+    ft_printf("Built-ins that currently work:\n");
+    ft_printf("\t\t=> echo\n");
+    ft_printf("************************************************************\n\e[0m");
+}
