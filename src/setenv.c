@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:21:20 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 17:41:18 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/13 14:55:13 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		check_envp(char **envp, char *var)
 {
 	int		i;
-	int		k;
 	char	*env_name;
 	char	*var_name;
 
@@ -28,7 +27,8 @@ int		check_envp(char **envp, char *var)
 		{
 			free(env_name);
 			free(var_name);
-			return(1);
+			return (1);
+		}
 		else
 			i++;
 	}
@@ -37,3 +37,43 @@ int		check_envp(char **envp, char *var)
 	return (0);
 }
 
+void	ft_add_var(char *var, char **envp)
+{
+	int		i;
+
+	i = 0;
+	while (envp[i] != NULL)
+		i++;
+	envp[i] = ft_strdup(var);
+	envp[i + 1] = NULL;
+}
+
+int		find_var(char *var, char **envp)
+{
+	int		i;
+	char	*ename;
+	char	*vname;
+
+	i = 0;
+	vname = ft_find_char(var, '=');
+	while (envp[i] != NULL)
+	{
+		ename = ft_find_char(envp[i], '=');
+		if (ft_strequ(vname, ename))
+		{
+			free(vname);
+			free(ename);
+			return (i);
+		}
+		i++;
+	}
+	free(vname);
+	free(ename);
+	return (-1);
+}
+
+void	change_line(char *var, char **envp, int i)
+{
+	ft_bzero((void *)envp[i], ft_strlen(envp[i]));
+	ft_strcpy(envp[i], var);
+}

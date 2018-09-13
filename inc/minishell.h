@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 17:42:12 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/13 11:46:26 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,13 @@ void    print_line(char **line, char **envp);
 void	ft_echo(char **split);
 void	ft_env(char **envp);
 void	ft_setenv(char **split, char **envp);
+void	ft_print_arg(char *arg);
+void	ft_add_var(char *var, char **envp);
+void	change_line(char *var, char **envp, int i);
+void	ft_unsetenv(char **split, char **envp);
+void	delete_line(char **envp, int i);
+
+int		find_var(char *var, char **envp);
+int		check_envp(char **envp, char *var);
 
 #endif

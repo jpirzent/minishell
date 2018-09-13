@@ -6,31 +6,31 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 17:20:06 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/13 14:56:43 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void    ft_echo(char **split)
+void	ft_echo(char **split)
 {
-    int     i;
+	int     i;
 
-    i = 1;
-    while (split[i] != NULL)
-    {
-        if (split[i] == NULL || split[i][0] == 0)
-            i++;
-        else
-        {
+	i = 1;
+	while (split[i] != NULL)
+	{
+		if (split[i] == NULL || split[i][0] == 0)
+			i++;
+		else
+		{
 			ft_putstr("\e[0;32m");
-            ft_print_arg(split[i]);
-            ft_putchar(' ');
+			ft_print_arg(split[i]);
+			ft_putchar(' ');
 			ft_putstr("\e[0m");
-            i++;
-        }
-    }
-    ft_putchar('\n');
+			i++;
+		}
+	}
+	ft_putchar('\n');
 }
 
 void	ft_env(char **envp)
@@ -53,8 +53,20 @@ void	ft_setenv(char **split, char **envp)
 	if (check_envp(envp, split[1]) == 1)
 	{
 		i = find_var(split[1], envp);
-		change_line(split[1], envp);
+		change_line(split[1], envp, i);
 	}
 	else
-		add_var(split[1], envp);
+		ft_add_var(split[1], envp);
+}
+
+void	ft_unsetenv(char **split, char **envp)
+{
+	int		i;
+
+	i = 0;
+	if (check_envp(envp, split[1]) == 1)
+	{
+		i = find_var(split[1], envp);
+		delete_line(envp, i);
+	}
 }
