@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/13 14:56:43 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/13 16:14:14 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,17 @@ void	ft_unsetenv(char **split, char **envp)
 	{
 		i = find_var(split[1], envp);
 		delete_line(envp, i);
+	}
+}
+
+void	ft_pwd(char **split)
+{
+	char	pwd[256];
+	char	*ptr;
+
+	if (split[1] == NULL)
+	{
+		ptr = getcwd(pwd, sizeof(pwd));
+		ft_printf("%s\n", ptr);
 	}
 }

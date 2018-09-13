@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_start.c                                      :+:      :+:    :+:   */
+/*   commands1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/12 09:53:04 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/13 16:11:02 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/09/13 16:15:09 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/09/13 17:29:04 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include <../inc/minishell.h>
 
-void    print_start(void)
+void	ft_cd(char **split)
 {
-	ft_printf("\e[1;34m****************************************************\n");
-	ft_printf("Built-ins that currently work:\n");
-	ft_printf("\t=> echo\n\t=> env\n\t=> setenv\n\t=> unsetenv\n\t=> pwd\n");
-	ft_printf("****************************************************\n\e[0m");
+	if (split[1] == NULL)
+	{
+		if (chdir("/~") != 0)
+			ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
+		else
+			ft_printf("change successfull\n");
+	}
 }

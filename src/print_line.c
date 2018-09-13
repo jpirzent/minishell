@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/13 14:55:29 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/13 16:12:55 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void    print_line(char **line, char **envp)
 		ft_setenv(split, envp);
 	else if (ft_strequ(split[0], "unsetenv"))
 		ft_unsetenv(split, envp);
+	else if (ft_strequ(split[0], "pwd"))
+		ft_pwd(split);
+	else if (ft_strequ(split[0], "cd"))
+		ft_cd(split);
 	else
 		ft_printf("\e[1;31minvalid arg\n\e[0m");
 }

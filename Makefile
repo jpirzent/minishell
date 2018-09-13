@@ -6,7 +6,7 @@
 #    By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/20 12:00:30 by jpirzent          #+#    #+#              #
-#    Updated: 2018/09/13 08:02:22 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/09/13 16:23:53 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_FILES = commands.c\
 			print_start.c\
 			functions.c\
 			setenv.c\
+			commands1.c\
 
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 
