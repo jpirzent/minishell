@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/13 16:14:25 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/14 13:10:04 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ void	change_line(char *var, char **envp, int i);
 void	ft_unsetenv(char **split, char **envp);
 void	delete_line(char **envp, int i);
 void	ft_pwd(char **split);
-void	ft_cd(char **split);
+void	ft_cd(char **split, char **envp);
+void	ft_help(void);
 
 int		find_var(char *var, char **envp);
 int		check_envp(char **envp, char *var);
+
+char	*get_pwd(char *hvar);
 
 #endif

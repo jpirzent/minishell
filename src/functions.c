@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:07:38 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/13 12:30:16 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/14 13:11:32 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,25 @@ void	delete_line(char **envp, int i)
 		i++;
 	}
 	envp[i] = NULL;
+}
+
+char	*get_pwd(char *hvar)
+{
+	int		i;
+	int		len;
+	int		start;
+	
+	i = 0;
+	len = 0;
+	while (hvar[i] != '=' && hvar[i])
+		i++;
+	if (hvar[i] == '\0')
+		return (NULL);
+	start = i + 1;
+	while (hvar[i])
+	{
+		len++;
+		i++;
+	}
+	return (ft_strsub(hvar, start, len));
 }
