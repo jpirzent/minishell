@@ -6,22 +6,22 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:21:20 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/13 14:55:13 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/17 11:57:33 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int		check_envp(char **envp, char *var)
+int		check_envp(char *var)
 {
 	int		i;
 	char	*env_name;
 	char	*var_name;
 
 	i = 0;
-	while (envp[i] != NULL)
+	while (env_cp[i] != NULL)
 	{
-		env_name = ft_find_char(envp[i], '=');
+		env_name = ft_find_char(env_cp[i], '=');
 		var_name = ft_find_char(var, '=');
 		if (ft_strequ(env_name, var_name))
 		{
@@ -37,18 +37,18 @@ int		check_envp(char **envp, char *var)
 	return (0);
 }
 
-void	ft_add_var(char *var, char **envp)
+void	ft_add_var(char *var)
 {
 	int		i;
 
 	i = 0;
-	while (envp[i] != NULL)
+	while (env_cp[i] != NULL)
 		i++;
-	envp[i] = ft_strdup(var);
-	envp[i + 1] = NULL;
+	env_cp[i] = ft_strdup(var);
+	env_cp[i + 1] = NULL;
 }
 
-int		find_var(char *var, char **envp)
+int		find_var(char *var)
 {
 	int		i;
 	char	*ename;
@@ -56,9 +56,9 @@ int		find_var(char *var, char **envp)
 
 	i = 0;
 	vname = ft_find_char(var, '=');
-	while (envp[i] != NULL)
+	while (env_cp[i] != NULL)
 	{
-		ename = ft_find_char(envp[i], '=');
+		ename = ft_find_char(env_cp[i], '=');
 		if (ft_strequ(vname, ename))
 		{
 			free(vname);
@@ -72,8 +72,8 @@ int		find_var(char *var, char **envp)
 	return (-1);
 }
 
-void	change_line(char *var, char **envp, int i)
+void	change_line(char *var, int i)
 {
-	ft_bzero((void *)envp[i], ft_strlen(envp[i]));
-	ft_strcpy(envp[i], var);
+	free(env_cp[i]);
+	env_cp[i] = ft_strdup(var);
 }

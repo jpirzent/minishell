@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/14 13:10:04 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/17 16:05:33 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,27 @@
 # include "../library/ft_printf/ft_printf.h"
 # include "../library/libft/libft.h"
 
-void    print_start(void);
-void    print_line(char **line, char **envp);
-void	ft_echo(char **split);
-void	ft_env(char **envp);
-void	ft_setenv(char **split, char **envp);
-void	ft_print_arg(char *arg);
-void	ft_add_var(char *var, char **envp);
-void	change_line(char *var, char **envp, int i);
-void	ft_unsetenv(char **split, char **envp);
-void	delete_line(char **envp, int i);
-void	ft_pwd(char **split);
-void	ft_cd(char **split, char **envp);
-void	ft_help(void);
+char	**env_cp;
 
-int		find_var(char *var, char **envp);
-int		check_envp(char **envp, char *var);
+void	print_start(void);
+void	print_line(char **line);
+void	ft_echo(char **split);
+void	ft_env(void);
+void	ft_setenv(char **split);
+void	ft_print_arg(char *arg);
+void	ft_add_var(char *var);
+void	change_line(char *var, int i);
+void	ft_unsetenv(char **split);
+void	delete_line(int i);
+void	ft_pwd(char **split);
+void	ft_cd(char **split);
+void	ft_help(void);
+void	in_env(char **envp);
+void	cd_noarg(void);
+void	cd_warg(char *pwd);
+
+int		find_var(char *var);
+int		check_envp(char *var);
 
 char	*get_pwd(char *hvar);
 

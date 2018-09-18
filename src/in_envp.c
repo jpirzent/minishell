@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_start.c                                      :+:      :+:    :+:   */
+/*   in_envp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/12 09:53:04 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/17 16:04:31 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/09/17 11:13:05 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/09/17 16:01:52 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	print_start(void)
+static int	envp_count(char **envp)
 {
-	ft_printf("\e[1;34m****************************************************\n");
-	ft_printf("Built-ins that currently work:\n");
-	ft_printf("\t=> echo\n\t=> env\n\t=> setenv\n\t=> unsetenv\n\t=> pwd\n");
-	ft_printf("****************************************************\n\e[0m");
+	int		i;
+
+	i = 0;
+	while (envp[i] != NULL)
+		i++;
+	return (i);
+}
+
+void		in_env(char **envp)
+{
+	int		i;
+
+	i = 0;
+	env_cp = (char **)malloc(sizeof(char *) * (envp_count(envp) + 1));
+	while (envp[i])
+	{
+		if (!(env_cp[i] = ft_strdup(envp[i])))
+		{
+			ft_printf("something went wrong ?\n");
+			exit(0);
+		}
+		i++;
+	}
 }

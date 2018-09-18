@@ -6,25 +6,18 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 16:15:09 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/14 13:11:01 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/17 12:30:42 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <../inc/minishell.h>
 
-void	ft_cd(char **split, char **envp)
+void	ft_cd(char **split)
 {
-	char	*pwd;
-	int		i;
-
 	if (split[1] == NULL)
-	{
-		i = find_var("HOME=", envp);
-		pwd = get_pwd(envp[i]);
-		ft_printf("%s\n", pwd);
-		if (chdir(pwd) != 0)
-			ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
-	}
+		cd_noarg();
+	else
+		cd_warg(split[1]);
 }
 
 void	ft_help(void)

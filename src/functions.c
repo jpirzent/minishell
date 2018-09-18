@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:07:38 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/14 13:11:32 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/17 16:12:47 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ void	ft_print_arg(char *arg)
 	}
 }
 
-void	delete_line(char **envp, int i)
+void	delete_line(int i)
 {
-	ft_bzero((void *)envp[i], ft_strlen(envp[i]));
-	while (envp[i + 1] != NULL)
+	free(env_cp[i]);
+	while (env_cp[i + 1] != NULL)
 	{
-		ft_strcpy(envp[i], envp[i + 1]);
-		ft_bzero((void *)envp[i + 1], ft_strlen(envp[i + 1]));
+		env_cp[i] = ft_strdup(env_cp[i + 1]);
+		free (env_cp[i + 1]);
 		i++;
 	}
-	envp[i] = NULL;
+	env_cp[i] = NULL;
 }
 
 char	*get_pwd(char *hvar)
@@ -42,7 +42,7 @@ char	*get_pwd(char *hvar)
 	int		i;
 	int		len;
 	int		start;
-	
+
 	i = 0;
 	len = 0;
 	while (hvar[i] != '=' && hvar[i])

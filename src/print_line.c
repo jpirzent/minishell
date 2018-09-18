@@ -6,17 +6,17 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/14 10:24:26 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/17 16:03:59 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void    print_line(char **line, char **envp)
+void	print_line(char **line)
 {
-	int     i;
-	char    **split;
-	
+	int		i;
+	char	**split;
+
 	i = 0;
 	split = ft_strsplit(line[0], ' ');
 	if (ft_strequ(split[0], "exit"))
@@ -24,15 +24,15 @@ void    print_line(char **line, char **envp)
 	else if (ft_strequ(split[0], "echo"))
 		ft_echo(split);
 	else if (ft_strequ(split[0], "env"))
-		ft_env(envp);
+		ft_env();
 	else if (ft_strequ(split[0], "setenv"))
-		ft_setenv(split, envp);
+		ft_setenv(split);
 	else if (ft_strequ(split[0], "unsetenv"))
-		ft_unsetenv(split, envp);
+		ft_unsetenv(split);
 	else if (ft_strequ(split[0], "pwd"))
 		ft_pwd(split);
 	else if (ft_strequ(split[0], "cd"))
-		ft_cd(split, envp);
+		ft_cd(split);
 	else if (ft_strequ(split[0], "help"))
 		ft_help();
 	else
