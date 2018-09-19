@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:15:16 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/18 12:35:06 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/19 10:58:17 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,79 +16,92 @@ void		cd_noarg(void)
 {
 	int		i;
 	int		k;
+	char	path[256];
 	char	*pwd;
+	char	*ptr;
 
 	if ((i = find_var("HOME=")) < 0)
-		ft_perror("HOME is unset");
+	{
+		ft_printf("\e[1;31mHOME is unset\e[0m\n");
+		return ;
+	}
+	ptr = getcwd(path, sizeof(path));
+	pwd = ft_strjoin("OLDPWD=", path);
+	if ((k = find_var("OLDPWD=")) < 0)
+		ft_add_var(pwd);
+	else
+		change_line(pwd, k);
 	pwd = get_pwd(env_cp[i]);
 	if (chdir(pwd) != 0)
 		ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
 	else
 	{
-		if ((i = find_var("PWD=")) < 0)
-		{
-			new_pwd();
-			return ;
-		}
+		ptr = getcwd(path, sizeof(path));
+		pwd = ft_strjoin("PWD=", path);
+		if ((k = find_var("PWD=")) < 0)
+			ft_add_var(pwd);
 		else
-		{
-			if ((k = find_var("OLDPWD=")) < 0)
-				ft_perror("OLDPWD is unset");
-			else
-			{
-				pwd = ft_strjoin("OLDPWD=", get_pwd(env_cp[i]));
-				change_line(pwd, k);
-				free(pwd);
-				if ((k = find_var("HOME=")) < 0)
-					ft_perror("HOME is unset");
-				else
-				{
-					pwd = ft_strjoin("PWD=", get_pwd(env_cp[k]));
-					change_line(pwd, i);
-					free(pwd);
-				}
-			}
-		}
+			change_line(pwd, k);
 	}
+
 }
 
 void		cd_warg(char *cwd)
 {
 	int		i;
-	int		k;
 	char	*pwd;
 	char	path[256];
 	char	*ptr;
 
-	if (chdir(cwd) != 0)
-		ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
+	if (ft_strequ(cwd, "-"))
+		cd_oldpwd();
 	else
 	{
-		i = find_var("PWD=");
-		k = find_var("OLDPWD=");
-		pwd = ft_strjoin("OLDPWD=", get_pwd(env_cp[i]));
-		change_line(pwd, k);
-		free(pwd);
 		ptr = getcwd(path, sizeof(path));
-		pwd = ft_strjoin("PWD=", getcwd(path, sizeof(path)));
-		change_line(pwd, i);
-		free(pwd);
+		pwd = ft_strjoin("OLDPWD=", path);
+		if ((i = find_var("OLDPWD=")) < 0)
+			ft_add_var(pwd);
+		else
+			change_line(pwd, i);
+		if (chdir(cwd) != 0)
+			ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
+		else
+		{
+			ptr = getcwd(path, sizeof(path));
+			pwd = ft_strjoin("PWD=", path);
+			if ((i = find_var(pwd)) < 0)
+				ft_add_var(pwd);
+			else
+				change_line(pwd, i);
+		}
 	}
 }
 
-void	new_pwd(void)
+void		cd_oldpwd(void)
 {
 	int		i;
-	int		k;
 	char	*pwd;
+	char	*tmp;
+	char	path[256];
+	char	*ptr;
 
-	if ((k = find_var("OLDPWD=")) < 0)
-		ft_perror("OLDPWD is unset");
+	if ((i = find_var("OLDPWD=")) < 0)
+		ft_printf("\e[1;31mOLDPWD is Unset\e[0m\n");
 	else
 	{
-		pwd = ft_strjoin("OLDPWD=", "");
-		change_line(pwd, k);
-		free(pwd);
-
+		pwd = get_pwd(env_cp[i]);
+		ptr = getcwd(path, sizeof(path));
+		tmp = ft_strjoin("OLDPWD=", path);
+		change_line(tmp, i);
+		if (chdir(pwd) != 0)
+			ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
+		else
+		{
+			tmp = ft_strjoin("PWD=", getcwd(path, sizeof(path)));
+			if ((i = find_var(tmp)) < 0)
+				ft_add_var(tmp);
+			else
+				change_line(tmp, i);
+		}
 	}
 }
