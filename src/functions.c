@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:07:38 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/17 16:12:47 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/19 14:55:23 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,33 @@ char	*get_pwd(char *hvar)
 		i++;
 	}
 	return (ft_strsub(hvar, start, len));
+}
+
+void	print_var(char *var)
+{
+	int		i;
+	char	*cont;
+	char	*nv;
+
+	nv = ft_strjoin(var, "=");
+	if ((i = find_var(nv)) < 0)
+		ft_printf("\e[1;31mUnable to find $%s\e[0m\n", var);
+	else
+	{
+		cont = get_pwd(env_cp[i]);
+		ft_printf("\e[0;32m%s \e[0m", cont);
+	}
+}
+
+char	*format_var(char *var)
+{
+	int		i;
+
+	i = 0;
+	while (var[i])
+		i++;
+	if (var[i - 1] == '=')
+		return (var);
+	else
+		return (ft_strjoin(var, "="));
 }

@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:15:16 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/19 10:58:17 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/19 15:24:23 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,12 @@ void		cd_warg(char *cwd)
 	int		i;
 	char	*pwd;
 	char	path[256];
-	char	*ptr;
 
 	if (ft_strequ(cwd, "-"))
 		cd_oldpwd();
 	else
 	{
-		ptr = getcwd(path, sizeof(path));
-		pwd = ft_strjoin("OLDPWD=", path);
+		pwd = ft_strjoin("OLDPWD=", getcwd(path, sizeof(path)));
 		if ((i = find_var("OLDPWD=")) < 0)
 			ft_add_var(pwd);
 		else
@@ -67,8 +65,7 @@ void		cd_warg(char *cwd)
 			ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
 		else
 		{
-			ptr = getcwd(path, sizeof(path));
-			pwd = ft_strjoin("PWD=", path);
+			pwd = ft_strjoin("PWD=", getcwd(path, sizeof(path)));
 			if ((i = find_var(pwd)) < 0)
 				ft_add_var(pwd);
 			else

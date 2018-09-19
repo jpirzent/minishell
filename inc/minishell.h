@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/19 10:58:47 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/19 14:51:41 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ void	in_env(char **envp);
 void	cd_noarg(void);
 void	cd_warg(char *pwd);
 void	cd_oldpwd(void);
+void	print_var(char *var);
 
 int		find_var(char *var);
 int		check_envp(char *var);
 
 char	*get_pwd(char *hvar);
+char	*format_var(char *var);
 
 #endif

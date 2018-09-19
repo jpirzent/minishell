@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/17 16:03:59 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/19 11:47:45 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_line(char **line)
 		exit(0);
 	else if (ft_strequ(split[0], "echo"))
 		ft_echo(split);
-	else if (ft_strequ(split[0], "env"))
+	else if (ft_strequ(split[0], "env") || ft_strequ(split[0], "/usr/bin/env"))
 		ft_env();
 	else if (ft_strequ(split[0], "setenv"))
 		ft_setenv(split);

@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/17 15:59:39 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/19 14:59:52 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_echo(char **split)
 			i++;
 		else
 		{
-			ft_putstr("\e[0;32m");
-			ft_print_arg(split[i]);
-			ft_putchar(' ');
-			ft_putstr("\e[0m");
+			if (split[i][0] == '$')
+				print_var(split[i] + 1);
+			else
+				ft_printf("\e[0;32m%s \e[0m", split[i]);
 			i++;
 		}
 	}
@@ -62,11 +62,13 @@ void	ft_setenv(char **split)
 void	ft_unsetenv(char **split)
 {
 	int		i;
+	char	*var;
 
 	i = 0;
-	if (check_envp(split[1]) == 1)
+	var = format_var(split[1]);
+	if (check_envp(var) == 1)
 	{
-		i = find_var(split[1]);
+		i = find_var(var);
 		delete_line(i);
 	}
 }
