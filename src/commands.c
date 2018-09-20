@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/19 14:59:52 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/20 16:41:09 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	ft_echo(char **split)
 			if (split[i][0] == '$')
 				print_var(split[i] + 1);
 			else
-				ft_printf("\e[0;32m%s \e[0m", split[i]);
+				ft_printf("\e[0;32m%s ", split[i]);
 			i++;
 		}
 	}
-	ft_putchar('\n');
+	ft_putstr("\n");
 }
 
 void	ft_env(void)
@@ -65,12 +65,19 @@ void	ft_unsetenv(char **split)
 	char	*var;
 
 	i = 0;
-	var = format_var(split[1]);
-	if (check_envp(var) == 1)
+	if (split[1] != NULL)
 	{
-		i = find_var(var);
-		delete_line(i);
+		var = format_var(split[1]);
+		if (check_envp(var) == 1)
+		{
+			i = find_var(var);
+			delete_line(i);
+		}
+		else
+			ft_printf("\e[1;31No environment var with that name\n");
 	}
+	else
+		ft_printf("\e[1;31mToo Few Arguments.\nusage:\tunsetenv [var]\n");
 }
 
 void	ft_pwd(char **split)

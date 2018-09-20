@@ -6,7 +6,7 @@
 #    By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/23 13:27:00 by jpirzent          #+#    #+#              #
-#    Updated: 2018/09/12 17:33:36 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/09/20 16:08:18 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ FILES =	ft_isalpha.c \
 		ft_strcpy.c \
 		ft_toupper.c \
 		ft_bzero.c \
+		ft_strtok.c\
 
 OBJECT = $(FILES:%.c=%.o)
 

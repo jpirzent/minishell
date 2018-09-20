@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 10:32:10 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/12 17:33:12 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/20 15:46:02 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ char		*ft_strmap(char const *s, char (*f)(char));
 char		*ft_strchr(const char *s, int c);
 char		*ft_strncat(char *s1, const char *s2, size_t n);
 char		**ft_strsplit(char const *s, char c);
+char		**ft_strtok(char *s);
 char		*ft_strnew(size_t size);
 char		*ft_find_char(char *s, char c);
 

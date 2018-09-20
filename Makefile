@@ -6,7 +6,7 @@
 #    By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/20 12:00:30 by jpirzent          #+#    #+#              #
-#    Updated: 2018/09/17 12:18:52 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/09/20 11:10:58 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC_FILES = commands.c\
 			commands1.c\
 			in_envp.c\
 			cd.c\
+			env_cmd.c\
 
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 
