@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:07:38 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/19 14:55:23 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 09:39:02 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	print_var(char *var)
 char	*format_var(char *var)
 {
 	int		i;
+	char	*tmp;
 
 	i = 0;
 	while (var[i])
@@ -84,5 +85,8 @@ char	*format_var(char *var)
 	if (var[i - 1] == '=')
 		return (var);
 	else
-		return (ft_strjoin(var, "="));
+	{
+		tmp = ft_strjoin(var, "=");
+		return (tmp);
+	}
 }

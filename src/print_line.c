@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/20 16:29:24 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 09:46:03 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	print_line(char *line)
 		ft_help();
 	else
 		ft_env_cmd(split[0], split);
+	ft_freetab(split);
 }

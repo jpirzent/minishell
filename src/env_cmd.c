@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/20 14:58:38 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 09:45:57 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static char		*cmd_loc(char *cmd)
 			free(exec);
 			i++;
 		}
+		ft_freetab(path_split);
 		return(exec);
 	}
 }
@@ -55,6 +56,7 @@ void	ft_env_cmd(char *cmd, char **split)
 	pid = fork();
 	if (pid == 0)
 	{
+		ft_putstr("\e[0;32m");
 		if (execve(exec, split, env_cp) == -1)
 			ft_printf("\e[1;31mcommand: %s not found!\n", cmd);
 		exit (EXIT_FAILURE);
