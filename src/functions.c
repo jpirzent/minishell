@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:07:38 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 09:39:02 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 10:41:14 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ void	print_var(char *var)
 	{
 		cont = get_pwd(env_cp[i]);
 		ft_printf("\e[0;32m%s \e[0m", cont);
+		free(cont);
 	}
+	free(nv);
 }
 
 char	*format_var(char *var)

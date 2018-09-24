@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 09:45:57 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 10:36:06 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static char		*cmd_loc(char *cmd)
 {
 	char	*exec;
+	char	*tmp;
 	char	**path_split;
 	int		i;
 
@@ -27,7 +28,9 @@ static char		*cmd_loc(char *cmd)
 	}
 	else
 	{
-		path_split = ft_strsplit(get_pwd(env_cp[i]), ':');
+		tmp = get_pwd(env_cp[i]);
+		path_split = ft_strsplit(tmp, ':');
+		free(tmp);
 		if (!path_split)
 			return (NULL);
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:15:16 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 07:57:44 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 10:34:48 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void		cd_noarg(void)
 		else
 			change_line(pwd, k);
 	}
+	free(pwd);
 
 }
 
@@ -102,6 +103,7 @@ void		cd_oldpwd(void)
 			else
 				change_line(tmp, i);
 		}
+		free(pwd);
 	}
 }
 
@@ -133,4 +135,5 @@ void		cd_change(char *cwd)
 		else
 			change_line(pwd, i);
 	}
+	free(pwd);
 }

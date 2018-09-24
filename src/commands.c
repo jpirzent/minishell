@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 08:31:04 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 11:04:30 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_unsetenv(char **split)
 		}
 		else
 			ft_printf("\e[1;31mNo environment var with that name\n");
+		free(var);
 	}
 	else
 		ft_printf("\e[1;31mToo Few Arguments.\nusage:\tunsetenv [var]\n");

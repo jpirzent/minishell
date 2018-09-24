@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpirzent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 13:06:47 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/06/08 08:45:26 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 10:26:52 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,13 @@ static char		*ft_do_itoa(char *new, int a)
 char			*ft_itoa(int a)
 {
 	char	*new;
+	char	*ret;
 
 	if (a == -2147483648)
 		return (ft_strdup("-2147483648"));
-	new = ft_strnew(ft_decnum(a));
+	new = ft_strnew((ft_decnum(a) + 1));
 	if (!new)
 		return (NULL);
-	return (ft_do_itoa(new, a));
+	ret = ft_do_itoa(new, a);
+	return (ret);
 }

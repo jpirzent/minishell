@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:27:35 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 08:28:55 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 09:53:59 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*ft_find_char(char *s, char c)
 		{
 			tmp = ft_strsub(s, 0, i);
 			return (tmp);
+		}
 		i++;
 	}
 	return (NULL);

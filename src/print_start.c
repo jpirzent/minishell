@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 09:53:04 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 09:41:28 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 11:01:17 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@ void	print_start(void)
 	ft_printf("\t=> echo\n\t=> env\n\t=> setenv\n\t=> unsetenv\n\t=> pwd\n\t");
 	ft_printf("=> cd\n\t=> any system calls\n");
 	ft_printf("****************************************************\n\e[0m");
-	ft_inc_shell();
 	ft_putstr("\e[0;35m]===|>\t\e[0;33m");
 }
