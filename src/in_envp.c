@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 11:13:05 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 11:11:55 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 17:31:21 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		in_env(char **envp)
 	int		i;
 
 	i = 0;
-	env_cp = (char **)malloc(sizeof(char *) * (envp_count(envp) + 100));
+	env_cp = (char **)malloc(sizeof(char *) * (envp_count(envp) + 1));
 	while (envp[i])
 	{
 		if (!(env_cp[i] = ft_strdup(envp[i])))

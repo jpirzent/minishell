@@ -6,11 +6,29 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 10:36:06 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 17:03:21 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+char			*find_path(char **path_split, char *cmd)
+{
+	int		i;
+	char	*exec;
+
+	i = 0;
+	while (path_split[i])
+	{
+		exec = ft_strjoin(path_split[i], "/");
+		exec = ft_strjoin(exec, cmd);
+		if (!access(exec, F_OK))
+			break ;
+		free(exec);
+		i++;
+	}
+	return (exec);
+}
 
 static char		*cmd_loc(char *cmd)
 {
@@ -34,21 +52,13 @@ static char		*cmd_loc(char *cmd)
 		if (!path_split)
 			return (NULL);
 		i = 0;
-		while (path_split[i])
-		{
-			exec = ft_strjoin(path_split[i], "/");
-			exec = ft_strjoin(exec, cmd);
-			if (!access(exec, F_OK))
-				break ;
-			free(exec);
-			i++;
-		}
+		exec = find_path(path_split, cmd);
 		ft_freetab(path_split);
-		return(exec);
+		return (exec);
 	}
 }
 
-void	ft_env_cmd(char *cmd, char **split)
+void			ft_env_cmd(char *cmd, char **split)
 {
 	pid_t	pid;
 	pid_t	wpid;
@@ -62,7 +72,7 @@ void	ft_env_cmd(char *cmd, char **split)
 		ft_putstr("\e[0;32m");
 		if (execve(exec, split, env_cp) == -1)
 			ft_printf("\e[1;31mcommand: %s not found!\n", cmd);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
 		ft_printf("\e[1;31mFork Failure!\n");

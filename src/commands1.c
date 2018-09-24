@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 16:15:09 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 08:16:30 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 16:52:19 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_help(void)
 	ft_printf("\t\t- unsetenv [name=value];\t//to remove a var from the ");
 	ft_printf("environment\n");
 	ft_printf("\t\t- pwd;\t\t\t\t//show the current working dir\n");
-	ft_printf("\t\t- cd [working path];\t\t//to change the current working dir\n");
-	ft_printf("\n\t\t- any sys calls, using the sys parameters\n");
+	ft_printf("\t\t- cd [working path];\t\t//to change the current working di");
+	ft_printf("r\n\n\t\t- any sys calls, using the sys parameters\n");
 	ft_printf("The rest does not work\n\e[0m");
 }

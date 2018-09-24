@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:21:20 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 09:43:21 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 17:35:34 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ void	ft_add_var(char *var)
 	while (env_cp[i] != NULL)
 		i++;
 	if (ft_strchr_b(var, '=') == 0)
-		var = ft_strjoin(var, "=");
-	env_cp[i] = ft_strdup(var);
+		env_cp[i] = ft_strjoin(var, "=");
 	env_cp[i + 1] = NULL;
-	free(var);
 }
 
 int		find_var(char *var)

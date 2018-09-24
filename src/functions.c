@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:07:38 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 10:41:14 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/24 16:54:03 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	delete_line(int i)
 	while (env_cp[i + 1] != NULL)
 	{
 		env_cp[i] = ft_strdup(env_cp[i + 1]);
-		free (env_cp[i + 1]);
+		free(env_cp[i + 1]);
 		i++;
 	}
 	env_cp[i] = NULL;
