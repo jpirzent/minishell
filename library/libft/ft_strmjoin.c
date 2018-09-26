@@ -1,50 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions1.c                                       :+:      :+:    :+:   */
+/*   ft_strmjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/24 07:17:43 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 11:53:40 by jpirzent         ###   ########.fr       */
+/*   Created: 2018/09/25 09:30:21 by jpirzent          #+#    #+#             */
+/*   Updated: 2018/09/25 10:23:37 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "libft.h"
 
-void	print_str(char *s)
+char	*ft_strmjoin(size_t num, ...)
 {
-	int		i;
+	va_list		l1;
+	va_list		l2;
+	char		*ret;
+	size_t		i;
+	size_t		len;
 
+	len = 0;
+	va_start(l1, num);
+	va_copy(l2, l1);
 	i = 0;
-	while (s[i])
+	while (i < num)
 	{
-		if (s[i] != '\"')
-			ft_putchar(s[i]);
+		len = len + ft_strlen(va_arg(l1, char *));
 		i++;
 	}
-	ft_putchar(' ');
-}
-
-void	ft_freetab(char **tab)
-{
-	int		i;
-
+	va_end(l1);
+	ret = (char *)ft_strnew(len + 1);
 	i = 0;
-	while (tab[i] != NULL)
+	while(i < num)
 	{
-		ft_strdel(&tab[i]);
+		ft_strlcat(ret, va_arg(l2, char *), len + 1);
 		i++;
 	}
-	free(tab);
-}
-
-void	ft_exit(char *line, char **split)
-{
-	ft_strdel(&line);
-	ft_freetab(split);
-	ft_freetab(env_cp);
-//	ft_printf("exiting\n");
-//	sleep(10);
-	exit(0);
+	va_end(l2);
+	return (ret);
 }

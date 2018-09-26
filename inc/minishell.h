@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 11:01:16 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 11:36:04 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_env_cmd(char *cmd, char **split);
 void	print_str(char *s);
 void	cd_change(char *cwd);
 void	ft_freetab(char **tab);
+void	ft_exit(char *line, char **split);
 
 int		find_var(char *var);
 int		check_envp(char *var);

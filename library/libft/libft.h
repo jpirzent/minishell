@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 10:32:10 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/20 15:46:02 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/25 10:23:59 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
 # define BUFF_SIZE 8
 # define UINT_MX 4294967296
 
@@ -89,6 +90,7 @@ char		**ft_strsplit(char const *s, char c);
 char		**ft_strtok(char *s);
 char		*ft_strnew(size_t size);
 char		*ft_find_char(char *s, char c);
+char		*ft_strmjoin(size_t num, ...);
 
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 

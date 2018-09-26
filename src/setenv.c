@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:21:20 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 17:35:34 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 08:32:40 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int		check_envp(char *var)
 			return (1);
 		}
 		else
+		{
 			i++;
+			ft_strdel(&var_name);
+			ft_strdel(&env_name);
+		}
 	}
 	free(env_name);
 	free(var_name);
@@ -66,6 +70,7 @@ int		find_var(char *var)
 			free(ename);
 			return (i);
 		}
+		ft_strdel(&ename);
 		i++;
 	}
 	free(vname);

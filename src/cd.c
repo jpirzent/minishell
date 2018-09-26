@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:15:16 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 17:26:28 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 11:51:30 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void		cd_noarg(void)
 		ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
 	else
 	{
+		if (pwd)
+			ft_strdel(&pwd);
 		pwd = ft_strjoin("PWD=", getcwd(path, sizeof(path)));
 		change_env("PWD=", pwd);
 	}

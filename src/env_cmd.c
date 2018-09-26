@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/24 17:03:21 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 09:44:14 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ char			*find_path(char **path_split, char *cmd)
 	i = 0;
 	while (path_split[i])
 	{
-		exec = ft_strjoin(path_split[i], "/");
-		exec = ft_strjoin(exec, cmd);
+		exec = ft_strmjoin(3, path_split[i], "/", cmd);
 		if (!access(exec, F_OK))
 			break ;
-		free(exec);
+		ft_strdel(&exec);
 		i++;
 	}
 	return (exec);
@@ -72,10 +71,14 @@ void			ft_env_cmd(char *cmd, char **split)
 		ft_putstr("\e[0;32m");
 		if (execve(exec, split, env_cp) == -1)
 			ft_printf("\e[1;31mcommand: %s not found!\n", cmd);
+		ft_strdel(&exec);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
 		ft_printf("\e[1;31mFork Failure!\n");
 	else
+	{
 		wpid = waitpid(pid, &stts, WUNTRACED);
+		ft_strdel(&exec);
+	}
 }
