@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:15:16 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 11:51:30 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:36:50 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ void		cd_warg(char *cwd)
 			ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
 		else
 		{
+			ft_strdel(&pwd);
 			pwd = ft_strjoin("PWD=", getcwd(path, sizeof(path)));
 			change_env("PWD=", pwd);
 		}
+		ft_strdel(&pwd);
 	}
 }
 
@@ -80,22 +82,22 @@ void		cd_oldpwd(void)
 	char	*pwd;
 	char	*tmp;
 	char	path[256];
-	char	*ptr;
 
 	if ((i = find_var("OLDPWD=")) < 0)
 		ft_printf("\e[1;31mOLDPWD is Unset\e[0m\n");
 	else
 	{
 		pwd = get_pwd(env_cp[i]);
-		ptr = getcwd(path, sizeof(path));
-		tmp = ft_strjoin("OLDPWD=", path);
+		tmp = ft_strjoin("OLDPWD=", getcwd(path, sizeof(path)));
 		change_line(tmp, i);
 		if (chdir(pwd) != 0)
 			ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
 		else
 		{
+			ft_strdel(&tmp);
 			tmp = ft_strjoin("PWD=", getcwd(path, sizeof(path)));
 			change_env("PWD=", tmp);
+			ft_strdel(&tmp);
 		}
 		free(pwd);
 	}
@@ -105,6 +107,7 @@ void		cd_change(char *cwd)
 {
 	int		i;
 	char	*pwd;
+	char	*cwd1;
 	char	path[256];
 
 	if ((i = find_var("HOME=")) < 0)
@@ -113,15 +116,18 @@ void		cd_change(char *cwd)
 		return ;
 	}
 	pwd = get_pwd(env_cp[i]);
-	cwd = ft_strjoin(pwd, cwd + 1);
+	cwd1 = ft_strjoin(pwd, cwd + 1);
+	ft_strdel(&pwd);
 	pwd = ft_strjoin("OLDPWD=", getcwd(path, sizeof(path)));
 	change_env("OLDPWD=", pwd);
-	if (chdir(cwd) != 0)
+	if (chdir(cwd1) != 0)
 		ft_printf("\e[1;31mUnable to open that dir\e[0m\n");
 	else
 	{
+		ft_strdel(&pwd);
 		pwd = ft_strjoin("PWD=", getcwd(path, sizeof(path)));
 		change_env("PWD=", pwd);
 	}
 	free(pwd);
+	free(cwd1);
 }

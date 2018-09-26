@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:07:38 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/25 15:40:34 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:57:02 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_var(char *var)
 
 	nv = ft_strjoin(var, "=");
 	if ((i = find_var(nv)) < 0)
-		ft_printf("\e[1;31mUnable to find $%s\e[0m\n", var);
+		ft_printf("\e[1;31mUnable to find $%s\e[0m", var);
 	else
 	{
 		cont = get_pwd(env_cp[i]);

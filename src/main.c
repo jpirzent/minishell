@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:08:54 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 09:38:34 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:54:58 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,10 @@ int		main(int argc, char **argv, char **envp)
 	signal(SIGABRT, ft_sighan);
 	while (stts)
 	{
-//		ft_printf("BEFORE gnl\n");	//
-//		sleep(5);
 		if (line != NULL)
 			ft_strdel(&line);
 		stts = get_next_line(0, &line);
-//		ft_printf("BEFORE print_line\n");	//
-//		sleep(5);
 		print_line(line);
-//		ft_printf("AFTER print_line\n");	//
-//		sleep(5);
-		//ft_freetab(line);
 		ft_putstr("\e[0;35m]===|>\t\e[0;33m");
-//		ft_printf("BEFORE loop restart\n");	//
-//		sleep(5);
 	}
 }

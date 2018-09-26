@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 11:39:22 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:55:08 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	print_line(char *line)
 {
 	char	**split;
 
-	//ft_printf("BEFORE\n");	//
-//	sleep(5);
 	if (!(split = ft_strtok(line)))
 		return ;
 	if (split[0] == 0 || split[0] == NULL)
@@ -41,7 +39,4 @@ void	print_line(char *line)
 	else
 		ft_env_cmd(split[0], split);
 	ft_freetab(split);
-//	ft_printf("AFTER\n");	//
-//	sleep(5);
-	//ft_freetab(line);
 }
