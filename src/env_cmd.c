@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 09:44:14 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/27 14:54:34 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static char		*cmd_loc(char *cmd)
 		free(tmp);
 		if (!path_split)
 			return (NULL);
-		i = 0;
 		exec = find_path(path_split, cmd);
-		ft_freetab(path_split);
+//		ft_freetab(path_split);
+//		path_split = NULL;
 		return (exec);
 	}
 }
@@ -71,7 +71,8 @@ void			ft_env_cmd(char *cmd, char **split)
 		ft_putstr("\e[0;32m");
 		if (execve(exec, split, env_cp) == -1)
 			ft_printf("\e[1;31mcommand: %s not found!\n", cmd);
-		ft_strdel(&exec);
+		if (exec != NULL)
+			ft_strdel(&exec);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
@@ -79,6 +80,7 @@ void			ft_env_cmd(char *cmd, char **split)
 	else
 	{
 		wpid = waitpid(pid, &stts, WUNTRACED);
-		ft_strdel(&exec);
+		if (exec != NULL)
+			ft_strdel(&exec);
 	}
 }

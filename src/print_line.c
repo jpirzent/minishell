@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 13:55:08 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/27 14:39:18 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,12 @@ void	print_line(char *line)
 		ft_exit(line, split);
 	else if (ft_strequ(split[0], "echo"))
 		ft_echo(split);
-	else if (ft_strequ(split[0], "env"))
-		ft_env();
+	else if (ft_strequ(split[0], "env") || ft_strequ(split[0], "pwd"))
+		ft_env(split);
 	else if (ft_strequ(split[0], "setenv"))
 		ft_setenv(split);
 	else if (ft_strequ(split[0], "unsetenv"))
 		ft_unsetenv(split);
-	else if (ft_strequ(split[0], "pwd"))
-		ft_pwd(split);
 	else if (ft_strequ(split[0], "cd"))
 		ft_cd(split);
 	else if (ft_strequ(split[0], "help"))
@@ -39,4 +37,5 @@ void	print_line(char *line)
 	else
 		ft_env_cmd(split[0], split);
 	ft_freetab(split);
+	split = NULL;
 }

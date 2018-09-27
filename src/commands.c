@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 08:33:13 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/27 14:06:57 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,23 @@ void	ft_echo(char **split)
 	ft_putstr("\n");
 }
 
-void	ft_env(void)
+void	ft_env(char **split)
 {
 	int		i;
 
-	i = 0;
-	while (env_cp[i] != NULL)
+	if (split[1] == NULL)
 	{
-		ft_printf("\e[0;32m%s\n", env_cp[i]);
-		i++;
+		if (ft_strequ(split[0], "pwd"))
+			ft_pwd(split);
+		else
+		{
+			i = 0;
+			while (env_cp[i] != NULL)
+			{
+				ft_printf("\e[0;32m%s\n", env_cp[i]);
+				i++;
+			}
+		}
 	}
 }
 

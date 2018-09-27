@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:21:20 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/26 08:32:40 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/27 10:45:48 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int		check_envp(char *var)
 	char	*var_name;
 
 	i = 0;
+	var_name = ft_find_char(var, '=');
 	while (env_cp[i] != NULL)
 	{
 		env_name = ft_find_char(env_cp[i], '=');
-		var_name = ft_find_char(var, '=');
 		if (ft_strequ(env_name, var_name))
 		{
 			free(env_name);
@@ -32,7 +32,6 @@ int		check_envp(char *var)
 		else
 		{
 			i++;
-			ft_strdel(&var_name);
 			ft_strdel(&env_name);
 		}
 	}
@@ -44,13 +43,18 @@ int		check_envp(char *var)
 void	ft_add_var(char *var)
 {
 	int		i;
+	char	**tmp;
 
 	i = 0;
-	while (env_cp[i] != NULL)
+	while (env_cp[i])
 		i++;
-	if (ft_strchr_b(var, '=') == 0)
-		env_cp[i] = ft_strjoin(var, "=");
-	env_cp[i + 1] = NULL;
+	tmp = (char **)ft_memalloc(sizeof(char *) * i + 1);
+	tmp[i] = NULL;
+	tmp[--i] = ft_strdup(var);
+	while (i--)
+		tmp[i] = ft_strdup(env_cp[i]);
+	ft_freetab(env_cp);
+	env_cp = tmp;
 }
 
 int		find_var(char *var)
@@ -80,6 +84,6 @@ int		find_var(char *var)
 
 void	change_line(char *var, int i)
 {
-	free(env_cp[i]);
+	ft_strdel(&env_cp[i]);
 	env_cp[i] = ft_strdup(var);
 }
