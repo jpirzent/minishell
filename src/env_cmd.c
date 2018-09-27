@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/27 14:54:34 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/27 15:44:01 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char			*find_path(char **path_split, char *cmd)
 		exec = ft_strmjoin(3, path_split[i], "/", cmd);
 		if (!access(exec, F_OK))
 			break ;
-		ft_strdel(&exec);
+		free(exec);
 		i++;
 	}
 	return (exec);
@@ -51,8 +51,7 @@ static char		*cmd_loc(char *cmd)
 		if (!path_split)
 			return (NULL);
 		exec = find_path(path_split, cmd);
-//		ft_freetab(path_split);
-//		path_split = NULL;
+		ft_freetab(path_split);
 		return (exec);
 	}
 }
