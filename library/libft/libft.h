@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 10:32:10 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/25 10:23:59 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 17:29:51 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct	s_line
+{
+	int			r;
+	int			i;
+	char		buffer[BUFF_SIZE + 1];
+}				t_line;
 
 t_list		*ft_lstnew(void *content, size_t content_size);
 void		ft_putchar(char c);
@@ -72,6 +79,7 @@ int			get_next_line(int const fd, char **line);
 size_t		ft_strlen(const char *str);
 
 char		*ft_strtrim(const char *s);
+char		*ft_strnjoin(const char *s0, const char *s1, size_t len);
 char		*ft_strcpy(char *dest, const char *src);
 char		*ft_itoa(int a);
 char		*ft_strrchr(const char *s, int c);

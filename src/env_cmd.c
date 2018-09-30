@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/30 15:01:50 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 17:11:03 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static char		*cmd_loc(char *cmd)
 			return (NULL);
 		exec = find_path(path_split, cmd);
 		ft_freetab(&path_split);
+		ft_putendl(exec);
 		return (exec);
 	}
 }
@@ -86,8 +87,8 @@ void			ft_env_cmd(char *cmd, char **split)
 		wpid = waitpid(pid, &stts, WUNTRACED);
 		if (exec != NULL)
 			ft_strdel(&exec);
-		ft_putendl("B:	am i causing shit?");
-		ft_freetab(&split);
-		ft_putendl("A:	am i causing shit?");
+//		ft_putendl("B:	am i causing shit?");
+//		ft_freetab(&split);
+//		ft_putendl("A:	am i causing shit?");
 	}
 }

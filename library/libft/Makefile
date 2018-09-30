@@ -6,7 +6,7 @@
 #    By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/23 13:27:00 by jpirzent          #+#    #+#              #
-#    Updated: 2018/09/25 10:22:56 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/09/30 17:30:03 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ FILES =	ft_isalpha.c \
 		ft_memchr.c \
 		ft_memset.c \
 		ft_putendl_fd.c \
+		ft_strnjoin.c\
 		ft_putstr_fd.c \
 		ft_strlen.c \
 		ft_isdigit.c \

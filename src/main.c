@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:08:54 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/30 14:59:44 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 17:30:37 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ int		main(int argc, char **argv, char **envp)
 	while (stts > 0)
 	{
 		ft_putstr("\e[0;35m>>===|>\t\e[0;33m");
-//		ft_putendl("B:	is it this?");
 		if (line != NULL)
 			free(line);
-//		ft_putendl("A:	is it this?");
 		stts = get_next_line(0, &line);
 		print_line(line);
 	}
