@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 17:21:20 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/27 10:45:48 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 13:33:24 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_add_var(char *var)
 	tmp[--i] = ft_strdup(var);
 	while (i--)
 		tmp[i] = ft_strdup(env_cp[i]);
-	ft_freetab(env_cp);
+	ft_freetab(&env_cp);
 	env_cp = tmp;
 }
 

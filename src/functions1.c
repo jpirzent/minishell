@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 07:17:43 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/27 15:08:12 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 13:43:37 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,27 @@ void	print_str(char *s)
 	ft_putchar(' ');
 }
 
-void	ft_freetab(char **tab)
+void	ft_freetab(char ***tab)
 {
 	int		i;
 
 	i = 0;
-	if (!tab)
+	if (!tab || !(*tab))
 		return ;
-	while (tab[i] != NULL)
+	while ((*tab)[i] != NULL)
 	{
-		free(tab[i]);
+		free((*tab)[i]);
 		i++;
 	}
-	free(tab);
+	free((*tab));
 }
 
 void	ft_exit(char *line, char **split)
 {
 	ft_strdel(&line);
-	ft_freetab(split);
+	ft_freetab(&split);
 	split = NULL;
-	ft_freetab(env_cp);
+	ft_freetab(&env_cp);
 	env_cp = NULL;
 	exit(0);
 }

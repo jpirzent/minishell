@@ -6,7 +6,7 @@
 #    By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/20 12:00:30 by jpirzent          #+#    #+#              #
-#    Updated: 2018/09/24 10:59:17 by jpirzent         ###   ########.fr        #
+#    Updated: 2018/09/30 12:51:07 by jpirzent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_FILES))
 
 
 # COMPILE #
-CCFLAGS = -g -Wall -Werror -Wextra
+CCFLAGS = -Wall -Werror -Wextra
 CC = gcc $(CCFLAGS)
 
 LIBF = $(LIB_PATH)libft.a
