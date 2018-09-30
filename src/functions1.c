@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 07:17:43 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/30 13:43:37 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 13:53:41 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_freetab(char ***tab)
 	int		i;
 
 	i = 0;
-	if (!tab || !(*tab))
+	if (!tab || !*tab)
 		return ;
 	while ((*tab)[i] != NULL)
 	{
