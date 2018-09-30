@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:09:07 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/27 14:06:57 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 14:57:15 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_echo(char **split)
 		}
 	}
 	ft_putstr("\n");
+	ft_freetab(&split);
 }
 
 void	ft_env(char **split)
@@ -51,6 +52,7 @@ void	ft_env(char **split)
 			}
 		}
 	}
+	ft_freetab(&split);
 }
 
 void	ft_setenv(char **split)
@@ -65,6 +67,7 @@ void	ft_setenv(char **split)
 	}
 	else
 		ft_add_var(split[1]);
+	ft_freetab(&split);
 }
 
 void	ft_unsetenv(char **split)
@@ -87,6 +90,7 @@ void	ft_unsetenv(char **split)
 	}
 	else
 		ft_printf("\e[1;31mToo Few Arguments.\nusage:\tunsetenv [var]\n");
+	ft_freetab(&split);
 }
 
 void	ft_pwd(char **split)

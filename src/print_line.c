@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 10:07:19 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/30 13:32:54 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 14:58:45 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ void	print_line(char *line)
 	else if (ft_strequ(split[0], "cd"))
 		ft_cd(split);
 	else if (ft_strequ(split[0], "help"))
-		ft_help();
+		ft_help(split);
 	else
 		ft_env_cmd(split[0], split);
-	ft_freetab(&split);
 	split = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 14:11:55 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/30 13:32:38 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 14:58:26 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_unsetenv(char **split);
 void	delete_line(int i);
 void	ft_pwd(char **split);
 void	ft_cd(char **split);
-void	ft_help(void);
+void	ft_help(char **split);
 void	in_env(char **envp);
 void	cd_noarg(void);
 void	cd_warg(char *pwd);

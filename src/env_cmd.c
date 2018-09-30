@@ -6,7 +6,7 @@
 /*   By: jpirzent <jpirzent@42.FR>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:02:32 by jpirzent          #+#    #+#             */
-/*   Updated: 2018/09/30 13:34:38 by jpirzent         ###   ########.fr       */
+/*   Updated: 2018/09/30 15:01:50 by jpirzent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,17 @@ void			ft_env_cmd(char *cmd, char **split)
 	int		stts;
 
 	exec = cmd_loc(cmd);
+	if (!exec)
+	{
+		ft_printf("\e[1;31mcommand: %s not found!\n", exec);
+		return ;
+	}
 	pid = fork();
 	if (pid == 0)
 	{
 		ft_putstr("\e[0;32m");
 		if (execve(exec, split, env_cp) == -1)
-			ft_printf("\e[1;31mcommand: %s not found!\n", cmd);
-		if (exec != NULL)
-			ft_strdel(&exec);
+			ft_printf("\e[1;31mexec: %s failed!\n", exec);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
@@ -83,5 +86,8 @@ void			ft_env_cmd(char *cmd, char **split)
 		wpid = waitpid(pid, &stts, WUNTRACED);
 		if (exec != NULL)
 			ft_strdel(&exec);
+		ft_putendl("B:	am i causing shit?");
+		ft_freetab(&split);
+		ft_putendl("A:	am i causing shit?");
 	}
 }
